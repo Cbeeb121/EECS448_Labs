@@ -36,7 +36,7 @@ bool LinkedList<T>::search(T value) const
 {
 	Node<T>* temp = m_front;
 	bool isFound = false;
-	for(int i=0; i<m_size; i++)
+	while(temp!=nullptr)
 	{
 		if(temp->getValue() == value)
 		{
@@ -44,7 +44,7 @@ bool LinkedList<T>::search(T value) const
 		}
 		else
 		{
-			temp->getNext();
+			temp = temp->getNext();
 		}
 	}
 
@@ -106,33 +106,33 @@ bool LinkedList<T>::removeBack()
 	Node<T>* secondintoLast = nullptr;
 	bool isRemoved = false;
 
-	if(m_front != nullptr)
+	if(m_size < 2)
 	{
-		lastNode = m_front->getNext();
+		if(m_size == 0)
+		{
+			isRemoved = false;
+		}
+		else
+		{
+			m_size--;
+			delete m_front;
+			m_front = nullptr;
+			isRemoved = true;
+		}
+	}
+	else
+	{
+		lastNode = m_front;
 		secondintoLast = m_front;
 		while(lastNode->getNext() != nullptr)
 		{
+			secondintoLast = lastNode;
 			lastNode = lastNode->getNext();
-			secondintoLast = secondintoLast->getNext();
 		}
 		delete lastNode;
-
-
-		// if(m_front->getNext() != nullptr)
-		// {
-		// 	lastNode->getNext();
-		// 	while(lastNode != nullptr)
-		// 	{
-		// 		lastNode->getNext();
-		// 		secondintoLast->getNext();
-		// 	}
-		// 	delete lastNode;
-		// 	secondintoLast->setNext(nullptr);
-		// 	isRemoved = true;
-		// }
+		isRemoved = true;
 	}
 
-	m_size--;
 	return(isRemoved);
 }
 
