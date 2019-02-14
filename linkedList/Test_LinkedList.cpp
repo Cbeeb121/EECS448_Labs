@@ -25,7 +25,7 @@ void Test_LinkedList::runTests()
 	score += test4() ? 5 : 0;
 	score += test5() ? 5 : 0;
 	score += test6() ? 5 : 0;
-	score += test7() ? 5 : 0; 
+	score += test7() ? 5 : 0;
 	score += test8() ? 2 : 0;
 	score += test9() ? 5 : 0;
 	score += test10() ? 5 : 0;
