@@ -1,6 +1,18 @@
 body{
   background-color: #168679;
-  color: #168679;
+  color: #ffffff;
+  align-items: center;
+  text-align: center;
+}
+
+h3{
+  color: #ffffff;
+  /* font-size: 50px; */
+}
+
+p{
+  padding-left: 20rem;
+  padding-right: 20rem;
 }
 
 imghere{
