@@ -11,3 +11,13 @@ function validate()
     alert ("Passwords are not equivalent");
   }
 }
+
+function previous()
+{
+
+}
+
+function next()
+{
+
+}
