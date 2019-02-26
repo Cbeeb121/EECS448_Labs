@@ -20,7 +20,7 @@ fourthImage = "power4.jpg"
 fifthImage = "power5.jpg"
 
 
-let x = 0;
+let x = 5;
 function previous()
 {
   x--;
@@ -56,7 +56,7 @@ function next()
   else if(Math.abs(x) % 5 == 1)
   {
     document.getElementById("slideshow").src = secondImage;
-    }
+  }
   else if(Math.abs(x) % 5 == 2)
   {
     document.getElementById("slideshow").src = thirdImage;
