@@ -9,11 +9,11 @@
     for ($j=1; $j <= 100 ; $j++) {
       if ($i == 0 && $j != 0)
       {
-        echo "<td bgcolor=\"#5F9EA0\">$row</td>";
+        echo "<td>0</td>";
       }
       else if ($i != 0 && $j == 0)
       {
-        echo "<td bgcolor=\"#5F9EA0\">$j</td>";
+        echo "<td>0</td>";
       }
       else if ($i != 0 && $j != 0)
       {
