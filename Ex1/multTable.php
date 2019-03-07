@@ -2,18 +2,29 @@
   //Inside mult.php
   error_reporting(E_ALL);
   ini_set("display_errors", 1);
+
   echo "<table>";
-  for ($i=1; $i <= 100 ; $i++) {
+  for ($i=0; $i <= 100; $i++) {
     echo "<tr>";
     for ($j=1; $j <= 100 ; $j++) {
-        echo "<td>". $i * $j . "</td>";
+      if ($i == 0 && $j != 0)
+      {
+        echo "<td bgcolor=\"#5F9EA0\">$row</td>";
+      }
+      else if ($i != 0 && $j == 0)
+      {
+        echo "<td bgcolor=\"#5F9EA0\">$j</td>";
+      }
+      else if ($i != 0 && $j != 0)
+      {
+        echo "<td>" $i * $j "</td>";
+      }
+      else
+      {
+        echo "<td></td>";
+      }
     }
-    "</tr>";
-  }
-  "</table>";
+    echo "</tr>";
+    }
+  echo "</table>";
   ?>
-
-
-
-
-?>
