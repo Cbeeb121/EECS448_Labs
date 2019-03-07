@@ -1,4 +1,8 @@
 body{
   color:#3237BF;
   background-color: #C9FA9E;
+  margin-left: 50px;
+}
+td{
+  font-weight: bold;
 }

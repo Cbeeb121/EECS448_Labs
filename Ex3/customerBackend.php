@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <?php
 
-  <html>
-    <head>
-      <meta charset="utf-8">
-      <title>Online Store</title>
-      <link href="style.css" rel="stylesheet" type="text/css" />
-      <script type="text/javascript" src="formChecker.js"> </script>
-    </head>
-    <body>
+  echo "<html>";
+    echo "<head>";
+      echo "<meta charset='utf-8'>";
+      echo "<title>Online Store</title>";
+      echo '<link href= "style.css" rel="stylesheet" type="text/css" />';
+      echo '<script type="text/javascript" src="formChecker.js"> </script>';
+    echo "</head>";
+    echo "<body>";
 
       $shipping = $_POST["shipping"];
       if ($shipping == "Free") {
@@ -34,12 +34,10 @@
       echo "<br>Email: " . $e;
       echo "<br>Password: " . $p;
       echo "<br>";
-      echo "<table>"
-      echo "<tr>";
-      echo "<td></td>";
+      echo "<table><tr><td></td>";
       echo "<td>Quantity</td>";
-      echo "<td>Cost Per Item</td>";
-      echo "<td>Sub Total</td>";
+      echo "<td>Item Cost</td>";
+      echo "<td>Total</td>";
       echo "</tr>";
       echo "<tr>";
       echo "<td>Motorola Razr</td>";
@@ -52,8 +50,7 @@
       echo "<td>"; echo $berry; echo "</td>";
       echo "<td>$310.00</td>";
       echo "<td>$"; echo $berry * 310; echo ".00</td>";
-      echo "</tr>";
-      echo "<tr>";
+      echo "</tr><tr>";
       echo "<td>Samsung Intensity</td>";
       echo "<td>"; echo $intensity; echo "</td>";
       echo "<td>$120.00</td>";
@@ -69,6 +66,6 @@
       echo "<td>$"; echo $tCost; echo ".00</td>";
       echo "</tr>";
       echo "</table>";
-    </body>
-  </html>
+    echo "</body>";
+  echo "</html>";
 ?>
