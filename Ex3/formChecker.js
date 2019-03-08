@@ -1,29 +1,33 @@
 function restart()
 {
   document.getElementById('form').reset();
-  document.setElementById('')
+  document.setElementById('form');
 }
 
 
 function validateEmail(email)
 {
-    let s = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return s.test(String(email).toLowerCase());
+  let s = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return s.test(String(email).toLowerCase());
 }
 
 
 function formSubmission()
 {
+
   let validatedForm = true;
   let message = "Errors:\n";
 
   let email = document.getElementById("email").value;
+
   if (!validateEmail(email))
   {
     validatedForm = false;
     message = message + "Must give valid email.\n";
   }
-  let password = document.getElementById("password").value.replace(/\s/g, '');
+
+  let password = document.getElementById("password");
+
   if(!password)
   {
     validatedForm = false;
@@ -52,7 +56,7 @@ function formSubmission()
 
   if (!validatedForm)
   {
-    alert(message);
+    window.alert(message);
   }
   return validatedForm;
 }
