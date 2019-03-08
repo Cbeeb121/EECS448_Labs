@@ -1,7 +1,7 @@
 function restart()
 {
-  document.getElementById('form').reset();
-  document.setElementById('form');
+  document.getElementById('form').restart();
+  document.setElementById('');
 }
 
 
@@ -18,7 +18,13 @@ function formSubmission()
   let validatedForm = true;
   let message = "Errors:\n";
 
+  let password = document.getElementById("password").value;
   let email = document.getElementById("email").value;
+  let razr = document.getElementById("razr").value;
+  let berry = document.getElementById("berry").value;
+  let intensity = document.getElementById("intensity").value;
+  let shippingChoice = document.getElementsByName("shipping");
+
 
   if (!validateEmail(email))
   {
@@ -26,24 +32,18 @@ function formSubmission()
     message = message + "Must give valid email.\n";
   }
 
-  let password = document.getElementById("password");
-
-  if(!password)
+  if(password == "")
   {
     validatedForm = false;
     message = message + "Must not pass empty password.";
   }
 
-  let razr = document.getElementById("razr").value;
-  let berry = document.getElementById("berry").value;
-  let intensity = document.getElementById("intensity").value;
   if (razr < 0 || berry < 0 || intensity < 0)
   {
     message = message + "Must give valid integers.";
     validatedForm = false;
   }
   let shippingTrue = false;
-  let shippingChoice = document.getElementsByName("shipping");
   for (let i = 0; i < shippingChoice.length; i++)
   {
     if (shippingChoice[i].checked) shippingTrue = true;
