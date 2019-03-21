@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Store</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+  <script src="formChecker.js"> </script>
+</head>
+
+  <body>
+    <h1>Welcome to Radio Shack!</h1><br>
+    <h2>Choose from our catalog:</h2><br>
+
+    <form action="customerBackend.php" method="post" onsubmit="return formSubmission()">
+      <br>
+      <img src="razr.png" width = "400px">
+      <h3> Motorola Razr - $200 each </h3><br>
+      Amount: <input type="number" min="0" name="razr" id="razr" value="0"><br>
+      <br>
+      <img src="berry.jpg" width = "400px">
+      <h3> BlackBerry Z10 - $310 each </h3><br>
+      Amount: <input type="number" min="0" name="berry" id="berry" value="0"><br>
+      <br>
+      <img src="intensity.jpg" width = "400px">
+      <h3> Samsung Intensity - $120 each </h3><br>
+      Amount: <input type="number" min="0" name="intensity" id="intensity" value="0"><br>
+
+      <h2>Shipping Availabilities</h2>
+        <input type="radio" name="shipping" value="Free" checked="true">[7 day] FREE<br>
+        <input type="radio" name="shipping" value="3 Day">[3 day] $5.00<br>
+        <input type="radio" name="shipping" value="Overnight">[Overnight] $50.00<br>
+      <h3>Please enter Contact Info:</h3><br>
+        Email: <input type="email" name="email" id="email"><br>
+        Password: <input type="password" name="password" id="password"><br>
+        <div class="submit">
+          <input type="submit">
+        </div>
+    </form>
+    <div class = "submit">
+      <button onclick="restart()">Reset</button>
+    </div>
+  </body>
+</html>
