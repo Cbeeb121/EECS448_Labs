@@ -1,0 +1,32 @@
+p
+{
+  margin-left: 10rem;
+  margin-right: 10rem;
+  background-color: darkblue;
+  color: lightgreen;
+  font-family: comic;
+  font-size: 16pt;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+body{
+  background-color:#168679;
+  text-align: center;
+}
+
+p:hover{
+  background-color:lightgreen;
+  color: darkblue;
+}
+
+background-wrapper {
+  background-image: url('spielberg.jpg');
+  background-size: 20%;
+  background-repeat: no-repeat;
+  opacity: 0.5;
+}
+
+h1.name{
+  color: darkorange;
+}

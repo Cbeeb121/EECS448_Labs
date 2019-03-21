@@ -1,0 +1,25 @@
+<!-- Two password fields
+first to enter the password and a second to verify it
+A button labelled "Validate" that alerts one of the following messages:
+Display informative error message if any of the following occur:
+the passwords entered don't match
+the passwords are not at least 8 characters long -->
+
+<html>
+  <head>
+     <script type="text/javascript"
+             src="home.js">
+     </script>
+     <link rel="stylesheet" href="style.css">
+    <title>Password Validator</title>
+  </head>
+  <body>
+    <h1>Validate a Password!</h1>
+    Enter a Password
+      Password: <input type="text" id="fpass"><br>
+      Same Password: <input type="text" id="spass"><br>
+      <button onclick="validate()">Validate</button>
+  </body>
+
+
+</html>
