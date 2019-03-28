@@ -1,4 +1,12 @@
 <?php
+
+echo "<html>";
+echo "<head>";
+echo "<meta charset='utf-8'>";
+echo '<link href= "style.css" rel="stylesheet" type="text/css" />';
+echo "</head>";
+echo "<body>";
+
 $mysqli = new mysqli("mysql.eecs.ku.edu", "c803b216", "si3ik4eV", "c803b216");
 
 /* check connection */

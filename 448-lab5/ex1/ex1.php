@@ -1,4 +1,4 @@
-<?php
+<!-- <?php
 
 // Logging into the database
 $servername = "cycle2.eecs.ku.edu";
@@ -47,4 +47,4 @@ else
     echo "Posts table could not be created. It likely already exists.";
   }
 
-?>
+?> -->
