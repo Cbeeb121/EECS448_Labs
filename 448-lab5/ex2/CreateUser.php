@@ -10,7 +10,7 @@ if ($mysqli->connect_error) {
 
 $username = $_POST["username"];
 
-$query = "INSERT INTO Users (user_id) VALUES ('$username')";
+$query = "INSERT INTO Users (user_id) VALUES ('$username');";
 
   if ($result = $mysqli->query($query)) {
     echo "<p>New Record created successfully</p>";
