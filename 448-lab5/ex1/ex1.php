@@ -23,35 +23,28 @@ $query = "CREATE TABLE Users" .
     ");";
 if ($result = $mysqli->query($query))
 {
-  echo("<p>Users table created.</p>");
-  echo("<br>");
+  echo "Users table created.");
 }
 else
 {
-  echo("<p>Users table could not be created. It likely already exists.</p>");
-  echo("<br>");
+  echo "Users table could not be created. It likely already exists.";
 }
-  $query = "CREATE TABLE Posts" .
-           "(" .
-           "post_id int NOT NULL AUTO_INCREMENT, " .
-           "content varchar(5000) NOT NULL, " .
-           "author_id varchar(255) NOT NULL, " .
-           "PRIMARY KEY (post_id), " .
-           "FOREIGN KEY (author_id) REFERENCES Users(user_id) " .
-           ");";
-if($result = $mysqli->query($query))
+
+$query2 = "CREATE TABLE Posts" .
+         "(" .
+         "post_id int NOT NULL AUTO_INCREMENT, " .
+         "content varchar(5000) NOT NULL, " .
+         "author_id varchar(255) NOT NULL, " .
+         "PRIMARY KEY (post_id), " .
+         "FOREIGN KEY (author_id) REFERENCES Users(user_id) " .
+         ");";
+if($result = $mysqli->query($query2))
   {
-    echo("<p>Posts table created.</p>");
-    echo("<br>");
+    echo "Posts table created");
   }
 else
   {
-    echo("<p>Posts table could not be created. It likely already exists.</p>");
-    echo("<br>");
+    echo "Posts table could not be created. It likely already exists.";
   }
-
-
-
-
 
 ?>
