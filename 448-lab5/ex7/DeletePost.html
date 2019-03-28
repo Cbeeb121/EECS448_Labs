@@ -29,6 +29,15 @@
       echo "<th>Delete?</th>";
       echo "</tr>";
 
+      while ($row = $result->fetch_assoc()) {
+        $un = $row['author_id'];
+        $content = $row['content'];
+        echo "<tr>";
+        echo "<td>". $un . "</td>";
+        echo "<td>". $content . "</td>";
+        echo "<td> <input type= 'checkbox'></td>";
+        echo "</tr>";
+      }
       echo "</table>";
       }
       ?>
