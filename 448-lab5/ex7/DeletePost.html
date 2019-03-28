@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Home</title>
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+
+<body>
+  <container>
+    <h1>All User Posts</h1>
+    <br>
+    <br>
+    <form action="DeletePost.php" method="post">
+      <?php
+      $mysqli = new mysqli("mysql.eecs.ku.edu", "c803b216", "si3ik4eV", "c803b216");
+      if ($mysqli->connect_error) {
+          printf("Connect failed: %s\n", $mysqli->connect_error);
+          exit();
+      }
+
+      $query = "SELECT * FROM Posts ORDER by author_id;";
+      $result = $mysqli->query($query);
+
+      echo "<table align='center' style= 'width:70%'>";
+      echo "<tr>";
+      echo "<th>Author ID</th>";
+      echo "<th>Post Content</th>";
+      echo "<th>Delete?</th>";
+      echo "</tr>";
+
+      while ($row = $result->fetch_assoc()) {
+        $un = $row['author_id'];
+        $content = $row['content'];
+        echo "<tr>";
+        echo "<td>". $un . "</td>";
+        echo "<td>". $content . "</td>";
+        echo "<td> <input type= 'checkbox'></td>";
+        echo "</tr>";
+      }
+      echo "</table>";
+      }
+      ?>
+      <button class= "submit">Delete</button>
+    </form>
+  </container>
+</body>
+</html>
