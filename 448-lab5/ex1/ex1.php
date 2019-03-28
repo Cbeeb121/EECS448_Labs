@@ -6,14 +6,14 @@ $username = "c803b216";
 $password = "si3ik4eV";
 
 // Create connection
-$conn = new mysqli($servername, $username, $password);
+$conn = new mysqli($servername, $username, $password, $username);
 
 // Check connection
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
-    echo "Connection Failed";
+    echo "<p>Connection Failed</p>";
 }
-echo "Connected successfully";
+echo "<p>Connected successfully</p>";
 
 
 $query = "CREATE TABLE Users" .
