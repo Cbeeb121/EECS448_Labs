@@ -16,25 +16,6 @@
        Message: {{ message }}
     </div>
 
-     <div class="jumbotron">
-       <h1 class="display-4">Hello, world!</h1>
-       <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-       <hr class="my-4">
-       <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
-       <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-     </div>
-
-     <div id="app-2">
-       <span v-bind:title="message">
-         Hover your mouse over me for a few seconds
-         to see my dynamically bound title!
-       </span>
-     </div>
-
-     <div id="app-3">
-       <span v-if="seen">Now you see me</span>
-     </div>
-
      <div id="todos">
        <ol>
          <li v-for="todo in todos" :key="todo.id">
@@ -43,14 +24,12 @@
        </ol>
      </div>
 
-     <div id="app-5">
-       <p>{{ message }}</p>
-       <button v-on:click="reverseMessage">Reverse Message</button>
-     </div>
-
-     <div id="app-6">
-       <p>{{ message }}</p>
-       <input v-model="message">
+     <div id="stops">
+       <ol>
+         <li v-for="stop in stops" :key="stop.id">
+           {{ stop }}
+         </li>
+       </ol>
      </div>
 
    </div>
@@ -94,36 +73,20 @@
       })
 
       var app2 = new Vue({
-        el: '#app-2',
+        el: '#stops'
         data: {
-          message: 'You loaded this page on ' + new Date().toLocaleString()
+          stops: [
+            
+          ]
         }
-      })
 
-      var app3 = new Vue({
-        el: '#app-3',
-        data: {
-          seen: true
-        }
-      })
-
-      var app5 = new Vue({
-        el: '#app-5',
-        data: {
-          message: 'Hello Vue.js!'
-        },
-        methods: {
-          reverseMessage: function () {
-            this.message = this.message.split('').reverse().join('')
-          }
-        }
-      })
-
-      var app6 = new Vue({
-        el: '#app-6',
-        data: {
-          message: 'Hello Vue!'
-        }
+        fetch('https://utils.pauliankline.com/stops.json')
+        .then(function(response) {
+          return response.json();
+        })
+        .then(function(myJson) {
+          console.log(JSON.stringify(myJson));
+        });
       })
     </script>
 
