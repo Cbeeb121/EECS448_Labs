@@ -11,48 +11,69 @@
      crossorigin="anonymous"/>
  </head>
  <body>
-   <div class="container">
-     <div id="app-4">
-       Message: {{ message }}
-    </div>
 
-     <div id="todos">
-       <ol>
-         <li v-for="todo in todos" :key="todo.id">
-           {{ todo.text }}
-         </li>
-       </ol>
-     </div>
-
-     <div id="stops">
-       <ol>
-         <li v-for="stop in stops" :key="stop.id">
-           {{ stop }}
-         </li>
-       </ol>
-     </div>
-
-   </div>
-
+  <script
+   src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+   integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+   crossorigin="anonymous"></script>
    <script
-    src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-    crossorigin="anonymous"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-      crossorigin="anonymous">
-    </script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous">
-    </script>
-    <!-- development version, includes helpful console warnings -->
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+     src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+     crossorigin="anonymous">
+   </script>
+   <script
+     src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+     crossorigin="anonymous">
+   </script>
+   <!-- development version, includes helpful console warnings -->
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
+   <div class="container">
+     <div class="jumbotron">
+       <h1>Console Manipulation</h1>
+       <p>Type in the console app-4.message = blah to change 'message' to blah</p>
+       <div id="app-4">
+         Message: {{ message }}
+      </div>
+      <br>
+      <br>
+      <h1>Vue Lists</h1>
+      <p>To-do List for the day</p>
+       <div id="todos">
+         <ol>
+           <li v-for="todo in todos" :key="todo.id">
+             {{ todo.text }}
+           </li>
+         </ol>
+       </div>
+     </div>
 
-    <script>
+     <div class="jumbotron">
+      <h1 class="display-4">Vue Lab</h1>
+      <p class="lead">This lab tackles the Vue.js framework</p>
+      <hr class="my-4">
+      <p>Below we will be accessing the users current location in order to display bus stops in relation to the distance from the user</p>
+      </hr>
+      </div>
+      <div class="jumbotron">
+        <h2>KU Bus Stops - Utilized with Vue.js</h2>
+        <div id="app2">
+          <input v-model.number="numStops" type="number">
+          <br><br>
+           <stop-bstrapcard
+              v-for="item in filteredStops" v-bind:busstop="item" v-bind:key="item.id">
+              <br>
+            </stop-bstrapcard>
+         </div>
+       </div>
+     </div>
+
+   <script>
+      Vue.component('stop-bstrapcard', {
+        props: ['busstop'],
+        template: '<div class="card" style="width: 22rem; color:blue; background-color:#BEE3F7;"><div class="card-body"><h4 class="card-title">{{ busstop.name}}</h5><br><p class="card-text" style="font-size:15px;">{{busstop.description}}</p><p class = "card-text">{{busstop.distance.toFixed(3)}} Miles away</p></div></div>'
+      })
 
       var app = new Vue({
         el: '#todos',
@@ -65,31 +86,71 @@
         }
       })
 
-      const app4 = new Vue({
+      const app3 = new Vue({
         el: '#app-4',
         data: {
         message: 'Hello Vue!'
         }
       })
 
-      var app2 = new Vue({
-        el: '#stops'
-        data: {
-          stops: [
-            
-          ]
-        }
+      Vue.component('stops-item', {
+        props: ['stops'],
+        template: '<li>{{ stops.text}}</li>'
+      })
 
+      var app2 = new Vue({
+        el: '#app2',
+        data: {
+          stops: [],
+          numStops: 10,
+          location: []
+        },
+        computed: {
+
+          //Solution found from: https://stackoverflow.com/questions/1129216/sort-array-of-objects-by-string-property-value
+          filteredStops: function(){
+            this.stops.sort((x, y) => (x.distance > y.distance) ? 1 : -1)
+            return this.stops.slice(0,this.numStops);
+          }
+        }
+      })
+
+        // Where we are 'fetching' the bus stop information
         fetch('https://utils.pauliankline.com/stops.json')
         .then(function(response) {
           return response.json();
         })
         .then(function(myJson) {
           console.log(JSON.stringify(myJson));
+          let ts = JSON.stringify(myJson);
+          app2.stops = JSON.parse(ts);
         });
-      })
+
+        // Use watchPosition instead of getCurrentPosition as watch will
+        // track the user's position as it may be prone to change
+        let watchID = navigator.geolocation.watchPosition(function(position) {
+          app2.location[0] = position.coords.latitude;
+          app2.location[1] = position.coords.longitude;
+          let i = 0
+          while( i < app2.stops.length){
+            app2.stops[i].distance = calculate_distance(app2.location[0], app2.location[1], app2.stops[i].lat, app2.stops[i].lon)
+            i++;
+          }
+        });
+
+        // Used for reference when computing the distance between two points
+        // https://stackoverflow.com/questions/18883601/function-to-calculate-distance-between-two-coordinates
+        function calculate_distance(lat1, lon1, lat2, lon2){
+          let radius = 3964;
+          let lon_d = ((lon2 - lon1) * (Math.PI / 180));
+          let lat_d = ((lat2 - lat1) * (Math.PI / 180));
+          let temp_dist = Math.sin(lat_d/2) * Math.sin(lat_d/2) + Math.cos(lat1*(Math.PI /180)) * Math.cos(lat2*(Math.PI/180)) * Math.sin(lon_d/2) * Math.sin(lon_d/2)
+          let x = 2 * Math.atan2(Math.sqrt(temp_dist), Math.sqrt(1-temp_dist));
+          let final_distance = radius * x;
+          return final_distance;
+        }
+
+
     </script>
-
-
   </body>
  </html>
