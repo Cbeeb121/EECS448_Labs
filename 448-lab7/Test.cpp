@@ -28,8 +28,12 @@ void Test::runTests()
 
 bool Test::Test_isEmpty()
 {
+  bool verifier = false;
   LinkedListOfInts temp;
-  return temp.isEmpty();
+  if(temp.isEmpty()) {verifier = true;}
+  temp.addBack(4);
+  if(!temp.isEmpty()) {verifier = true;}
+  else{ verifier = false;}
 }
 
 bool Test::Test_size()
@@ -70,9 +74,9 @@ bool Test::Test_toVector()
 
 bool Test::Test_addBack()
 {
-  bool verifier = false
+  bool verifier = false;
   LinkedListOfInts temp;
-  if(temp.size() == 0){ return true}
+  if(temp.size() == 0){ return true;}
   else{ return false; }
   temp.addBack(5);
   temp.addBack(7);
