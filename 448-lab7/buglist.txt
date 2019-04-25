@@ -1,8 +1,144 @@
 List of known bugs:
 
-1. isEmpty will return true for any size of LinkedList. We expect it to be false if size is greater than 0
+
+isEmpty
+----------
+1. isEmpty will return true if the LinkedList is nonempty. We expect it to be false if size is greater than 0
 but it returns true regardless.
 
-2. BOTH removeBack and removeFront don't remove elements from the list. They also return true in any case.
+removeBack
+-----------
+2. removeBack doesn't remove an element from the list.
+2. removeBack doesn't remove an element from the back of the list.
+3. removeBack returns true even though it doesn't remove an element
 
-3. addBack adds to the front, not to the back.
+removeFront
+-----------
+4. removeFront doesn't remove an element from the list.
+5. removeFront doesn't remove an element from the front of the list.
+6. removeFront returns true even though it doesn't remove an element.
+
+addBack
+----------
+7. addBack adds to the front, not to the back.
+
+
+
+See below for memory leaks:
+
+==981==
+==981== HEAP SUMMARY:
+==981==     in use at exit: 73,072 bytes in 24 blocks
+==981==   total heap usage: 31 allocs, 7 frees, 74,128 bytes allocated
+==981==
+==981== 16 bytes in 1 blocks are definitely lost in loss record 12 of 24
+==981==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==981==    by 0x402CE3: LinkedListOfInts::addFront(int) (LinkedListOfInts.cpp:81)
+==981==    by 0x402CBA: LinkedListOfInts::addBack(int) (LinkedListOfInts.cpp:74)
+==981==    by 0x401B12: Test::Test_addBack_adds_to_empty_list() (Test.cpp:177)
+==981==    by 0x4011BA: Test::empty_list_tests() (Test.cpp:49)
+==981==    by 0x400FAE: Test::runTests() (Test.cpp:15)
+==981==    by 0x400E6B: main (main.cpp:15)
+==981==
+==981== 16 bytes in 1 blocks are definitely lost in loss record 13 of 24
+==981==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==981==    by 0x402CE3: LinkedListOfInts::addFront(int) (LinkedListOfInts.cpp:81)
+==981==    by 0x4020BE: Test::Test_addFront_adds_to_empty_list() (Test.cpp:255)
+==981==    by 0x401235: Test::empty_list_tests() (Test.cpp:56)
+==981==    by 0x400FAE: Test::runTests() (Test.cpp:15)
+==981==    by 0x400E6B: main (main.cpp:15)
+==981==
+==981== 16 bytes in 1 blocks are definitely lost in loss record 14 of 24
+==981==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==981==    by 0x402CE3: LinkedListOfInts::addFront(int) (LinkedListOfInts.cpp:81)
+==981==    by 0x401D2E: Test::Test_isEmpty_expect_false() (Test.cpp:198)
+==981==    by 0x401468: Test::non_empty_list_tests() (Test.cpp:90)
+==981==    by 0x400FBA: Test::runTests() (Test.cpp:16)
+==981==    by 0x400E6B: main (main.cpp:15)
+==981==
+==981== 32 (16 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 15 of 24
+==981==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==981==    by 0x402CE3: LinkedListOfInts::addFront(int) (LinkedListOfInts.cpp:81)
+==981==    by 0x401E59: Test::Test_size_expect_2() (Test.cpp:219)
+==981==    by 0x4014E6: Test::non_empty_list_tests() (Test.cpp:97)
+==981==    by 0x400FBA: Test::runTests() (Test.cpp:16)
+==981==    by 0x400E6B: main (main.cpp:15)
+==981==
+==981== 32 (16 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 16 of 24
+==981==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==981==    by 0x402CE3: LinkedListOfInts::addFront(int) (LinkedListOfInts.cpp:81)
+==981==    by 0x402CBA: LinkedListOfInts::addBack(int) (LinkedListOfInts.cpp:74)
+==981==    by 0x401FAD: Test::Test_search_nonempty_expect_false() (Test.cpp:242)
+==981==    by 0x401561: Test::non_empty_list_tests() (Test.cpp:104)
+==981==    by 0x400FBA: Test::runTests() (Test.cpp:16)
+==981==    by 0x400E6B: main (main.cpp:15)
+==981==
+==981== 32 (16 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 17 of 24
+==981==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==981==    by 0x402CE3: LinkedListOfInts::addFront(int) (LinkedListOfInts.cpp:81)
+==981==    by 0x402CBA: LinkedListOfInts::addBack(int) (LinkedListOfInts.cpp:74)
+==981==    by 0x401F0B: Test::Test_search_nonempty_expect_true() (Test.cpp:234)
+==981==    by 0x4015DF: Test::non_empty_list_tests() (Test.cpp:111)
+==981==    by 0x400FBA: Test::runTests() (Test.cpp:16)
+==981==    by 0x400E6B: main (main.cpp:15)
+==981==
+==981== 32 (16 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 18 of 24
+==981==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==981==    by 0x402CE3: LinkedListOfInts::addFront(int) (LinkedListOfInts.cpp:81)
+==981==    by 0x402CBA: LinkedListOfInts::addBack(int) (LinkedListOfInts.cpp:74)
+==981==    by 0x401BEB: Test::Test_addBack_adds_to_back() (Test.cpp:185)
+==981==    by 0x40165A: Test::non_empty_list_tests() (Test.cpp:118)
+==981==    by 0x400FBA: Test::runTests() (Test.cpp:16)
+==981==    by 0x400E6B: main (main.cpp:15)
+==981==
+==981== 32 (16 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 19 of 24
+==981==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==981==    by 0x402CE3: LinkedListOfInts::addFront(int) (LinkedListOfInts.cpp:81)
+==981==    by 0x402197: Test::Test_addFront_adds_to_front() (Test.cpp:263)
+==981==    by 0x4016D5: Test::non_empty_list_tests() (Test.cpp:125)
+==981==    by 0x400FBA: Test::runTests() (Test.cpp:16)
+==981==    by 0x400E6B: main (main.cpp:15)
+==981==
+==981== 32 (16 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 20 of 24
+==981==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==981==    by 0x402CE3: LinkedListOfInts::addFront(int) (LinkedListOfInts.cpp:81)
+==981==    by 0x4022ED: Test::Test_removeBack_nonempty_list_expect_true() (Test.cpp:277)
+==981==    by 0x401750: Test::non_empty_list_tests() (Test.cpp:132)
+==981==    by 0x400FBA: Test::runTests() (Test.cpp:16)
+==981==    by 0x400E6B: main (main.cpp:15)
+==981==
+==981== 32 (16 direct, 16 indirect) bytes in 1 blocks are definitely lost in loss record 21 of 24
+==981==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==981==    by 0x402CE3: LinkedListOfInts::addFront(int) (LinkedListOfInts.cpp:81)
+==981==    by 0x4025D1: Test::Test_removeFront_nonempty_list_expect_true() (Test.cpp:303)
+==981==    by 0x401846: Test::non_empty_list_tests() (Test.cpp:146)
+==981==    by 0x400FBA: Test::runTests() (Test.cpp:16)
+==981==    by 0x400E6B: main (main.cpp:15)
+==981==
+==981== 48 (16 direct, 32 indirect) bytes in 1 blocks are definitely lost in loss record 22 of 24
+==981==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==981==    by 0x402CE3: LinkedListOfInts::addFront(int) (LinkedListOfInts.cpp:81)
+==981==    by 0x402430: Test::Test_removeBack_nonempty_list_removes_from_back() (Test.cpp:288)
+==981==    by 0x4017CB: Test::non_empty_list_tests() (Test.cpp:139)
+==981==    by 0x400FBA: Test::runTests() (Test.cpp:16)
+==981==    by 0x400E6B: main (main.cpp:15)
+==981==
+==981== 48 (16 direct, 32 indirect) bytes in 1 blocks are definitely lost in loss record 23 of 24
+==981==    at 0x4C2E0EF: operator new(unsigned long) (in /usr/lib/valgrind/vgpreload_memcheck-amd64-linux.so)
+==981==    by 0x402CE3: LinkedListOfInts::addFront(int) (LinkedListOfInts.cpp:81)
+==981==    by 0x402714: Test::Test_removeFront_nonempty_list_removes_from_front() (Test.cpp:314)
+==981==    by 0x4018C1: Test::non_empty_list_tests() (Test.cpp:153)
+==981==    by 0x400FBA: Test::runTests() (Test.cpp:16)
+==981==    by 0x400E6B: main (main.cpp:15)
+==981==
+==981== LEAK SUMMARY:
+==981==    definitely lost: 192 bytes in 12 blocks
+==981==    indirectly lost: 176 bytes in 11 blocks
+==981==      possibly lost: 0 bytes in 0 blocks
+==981==    still reachable: 72,704 bytes in 1 blocks
+==981==         suppressed: 0 bytes in 0 blocks
+==981== Reachable blocks (those to which a pointer was found) are not shown.
+==981== To see them, rerun with: --leak-check=full --show-leak-kinds=all
+==981==
+==981== For counts of detected and suppressed errors, rerun with: -v
+==981== ERROR SUMMARY: 12 errors from 12 contexts (suppressed: 0 from 0)

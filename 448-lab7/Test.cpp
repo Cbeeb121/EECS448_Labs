@@ -5,89 +5,74 @@ using namespace std;
 
 void Test::runTests()
 {
-  cout << "\n==================\n";
-  cout << "--- TEST SUITE ---\n";
-  cout << "==================\n\n";
+  cout << "\n  ==================\n";
+  cout << "  --- TEST SUITE ---";
+  cout << "\n  ==================\n\n";
+
+  passedTests = 0;
+  totalTests = 0;
 
   empty_list_tests();
   non_empty_list_tests();
-
   results();
-  //
-  // if (Test_isEmpty()) { cout << "isEmpty [PASSED]\n"; passedTests++; }
-  // else{ cout << "isEmpty [FAILED]\n"; }
-  // if (Test_size()) { cout << "size [PASSED]\n"; passedTests++; }
-  // else{ cout << "size [FAILED]\n"; }
-  // if (Test_search()) { cout << "search [PASSED]\n"; passedTests++; }
-  // else{ cout << "search [FAILED]\n"; }
-  // if (Test_toVector()) { cout << "toVector [PASSED]\n"; passedTests++; }
-  // else{ cout << "toVector [FAILED]\n"; }
-  // if (Test_addBack()) { cout << "addBack [PASSED]\n"; passedTests++; }
-  // else{ cout << "addBack [FAILED]\n"; }
-  // if (Test_addFront()) { cout << "addFront [PASSED]\n"; passedTests++; }
-  // else{ cout << "addFront [FAILED]\n"; }
-  // if (Test_removeBack()) { cout << "removeBack [PASSED]\n"; passedTests++; }
-  // else{ cout << "removeBack [FAILED]\n"; }
-  // if (Test_removeFront()) { cout << "removeFront [PASSED]\n"; passedTests++; }
-  // else{ cout << "removeFront [FAILED]\n"; }
 }
 
 void Test::empty_list_tests()
 {
 
-  cout << "Empty List Tests" << endl;
-  cout << "----------------" << endl;
+  cout << "  |  Empty List Tests" << endl;
+  cout << "  -------------------------------" << endl;
 
-  cout << "+ isEmpty should return true: ";
+  cout << "  |  isEmpty should return true: ";
   totalTests++;
   if(Test_isEmpty_expect_true())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ size should return 0: ";
+  cout << "  |  size should return 0: ";
   totalTests++;
   if(Test_size_expect_0())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ search should return false: ";
+  cout << "  |  search should return false: ";
   totalTests++;
   if(!Test_search_empty_expect_false())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ addBack should adds to a list: ";
+  cout << "  |  addBack should add to a list: ";
   totalTests++;
   if(Test_addBack_adds_to_empty_list())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ addFront should add to a list: ";
+  cout << "  |  addFront should add to a list: ";
   totalTests++;
   if(Test_addFront_adds_to_empty_list())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ removeBack should return false: ";
+  cout << "  |  removeBack should return false: ";
   totalTests++;
   if(Test_removeBack_empty_list_expect_false())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ removeBack should return false: ";
+  cout << "  |  removeBack should return false: ";
   totalTests++;
   if(Test_removeBack_empty_list_expect_false())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ removeFront should return false: ";
+  cout << "  |  removeFront should return false: ";
   totalTests++;
   if(Test_removeFront_empty_list_expect_false())
   {cout << "[PASSED]\n"; passedTests++;}
@@ -97,73 +82,73 @@ void Test::empty_list_tests()
 
 void Test::non_empty_list_tests()
 {
-  cout << "\n\nNon Empty List Tests" << endl;
-  cout << "----------------" << endl;
+  cout << "\n\n  |  Non Empty List Tests" << endl;
+  cout << "  -------------------------------" << endl;
 
-  cout << "+ isEmpty should return false: ";
+  cout << "  |  isEmpty should return false: ";
   totalTests++;
   if(!Test_isEmpty_expect_false())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ size should return 2: ";
+  cout << "  |  size should return 2 with two elements in list: ";
   totalTests++;
   if(Test_size_expect_2())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ search should return false if searched value is not in list: ";
+  cout << "  |  search should return false if searched value is not in list: ";
   totalTests++;
   if(!Test_search_nonempty_expect_false())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ search should return true if searched value is in list: ";
+  cout << "  |  search should return true if searched value is in list: ";
   totalTests++;
   if(Test_search_nonempty_expect_true())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ addBack should add to back of list: ";
+  cout << "  |  addBack should add to back of list: ";
   totalTests++;
   if(Test_addBack_adds_to_back())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ addFront should add to front of the list: ";
+  cout << "  |  addFront should add to front of the list: ";
   totalTests++;
   if(Test_addFront_adds_to_front())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ removeBack should remove an element from a list: ";
+  cout << "  |  removeBack should remove an element from a list: ";
   totalTests++;
   if(Test_removeBack_nonempty_list_expect_true())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ removeBack should remove element from back of the list: ";
+  cout << "  |  removeBack should remove element from back of the list: ";
   totalTests++;
   if(Test_removeBack_nonempty_list_removes_from_back())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ removeFront should remove an element from a list: ";
+  cout << "  |  removeFront should remove an element from a list: ";
   totalTests++;
   if(Test_removeFront_nonempty_list_expect_true())
   {cout << "[PASSED]\n"; passedTests++;}
   else
   {cout << "[FAILED]\n";}
 
-  cout << "+ removeFront should remove element from front of the list: ";
+  cout << "  |  removeFront should remove element from front of the list: ";
   totalTests++;
   if(Test_removeFront_nonempty_list_removes_from_front())
   {cout << "[PASSED]\n"; passedTests++;}
@@ -173,12 +158,17 @@ void Test::non_empty_list_tests()
 
 void Test::results()
 {
-  cout << "\n\n---------------------\n" << endl;
-  cout << "Tests have completed.\n" << endl;
+  cout << "\n  -------------------------------\n" << endl;
+  cout << "  |  Tests have completed." << endl;
   double success_percentage = passedTests / totalTests;
-  cout << "\n---------------------\n\n" << endl;
-  cout << passedTests << " out of " << totalTests << " passed successfully.\n" << endl;
-  cout << success_percentage << "% of tests passed\n";
+  cout << "\n  -------------------------------\n" << endl;
+  cout << "  |  ";
+  for(int i=0; i<passedTests; i++){ cout << "+";}
+  for (int i = 0; i < totalTests-passedTests; i++) {cout << "-";}
+  cout << endl;
+  cout << endl;
+  cout << "  |  " << passedTests << " out of " << totalTests << " passed successfully.\n" << endl;
+  cout << "  |  " << success_percentage*100 << "% of tests passed\n";
 }
 
 bool Test::Test_addBack_adds_to_empty_list()
@@ -257,26 +247,6 @@ bool Test::Test_search_empty_expect_false()
 {
   LinkedListOfInts temp;
   return(temp.search(6));
-}
-
-bool Test::Test_toVector_on_empty_list()
-{
-  // LinkedListOfInts temp;
-  // temp.toVector();
-  // std::vector<int> vector_temp;
-  // if(vector_temp == temp){return true;}
-  // else{return false;}
-}
-
-bool Test::Test_toVector_on_nonempty_list()
-{
-  // LinkedListOfInts temp;
-  // temp.addBack(5);
-  // temp.toVector();
-  // std::vector<int> vector_temp;
-  // vector_temp.at(0) = 5;
-  // if(vector_temp == temp){return true;}
-  // else{return false;}
 }
 
 bool Test::Test_addFront_adds_to_empty_list()

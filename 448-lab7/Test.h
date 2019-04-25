@@ -19,8 +19,6 @@ class Test
     bool Test_search_nonempty_expect_false();
     bool Test_search_nonempty_expect_true();
     bool Test_search_empty_expect_false();
-    bool Test_toVector_on_empty_list();
-    bool Test_toVector_on_nonempty_list();
     bool Test_addBack_adds_to_empty_list();
     bool Test_addBack_adds_to_back();
     bool Test_addFront_adds_to_empty_list();
@@ -34,8 +32,8 @@ class Test
 
   private:
     LinkedListOfInts List;
-    int passedTests = 0;
-    int totalTests = 0;
+    double passedTests;
+    double totalTests;
 
 };
 

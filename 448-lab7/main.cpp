@@ -10,13 +10,10 @@
 
 int main(int argc, char** argv)
 {
-	LinkedListOfInts testableList;
-
 	Test myTest;
-	std::cout << "Running...\n";
+	std::cout << "\n  |  Running...\n";
 	myTest.runTests();
-	std::cout << "\nAnd we're done.\nGoodbye.\n";
+	std::cout << "\n  |  And we're done.\n  |  Goodbye.\n\n\n";
 
 	return (0);
-
 }
