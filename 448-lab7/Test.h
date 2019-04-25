@@ -8,17 +8,34 @@ class Test
 {
   public:
     void runTests();
-    bool Test_isEmpty();
-    bool Test_size();
-    bool Test_search();
-    bool Test_toVector();
-    bool Test_addBack();
-    bool Test_addFront();
-    bool Test_removeBack();
-    bool Test_removeFront();
+    void empty_list_tests();
+    void results();
+
+    void non_empty_list_tests();
+    bool Test_isEmpty_expect_true();
+    bool Test_isEmpty_expect_false();
+    bool Test_size_expect_0();
+    bool Test_size_expect_2();
+    bool Test_search_nonempty_expect_false();
+    bool Test_search_nonempty_expect_true();
+    bool Test_search_empty_expect_false();
+    bool Test_toVector_on_empty_list();
+    bool Test_toVector_on_nonempty_list();
+    bool Test_addBack_adds_to_empty_list();
+    bool Test_addBack_adds_to_back();
+    bool Test_addFront_adds_to_empty_list();
+    bool Test_addFront_adds_to_front();
+    bool Test_removeBack_empty_list_expect_false();
+    bool Test_removeBack_nonempty_list_expect_true();
+    bool Test_removeBack_nonempty_list_removes_from_back();
+    bool Test_removeFront_empty_list_expect_false();
+    bool Test_removeFront_nonempty_list_expect_true();
+    bool Test_removeFront_nonempty_list_removes_from_front();
 
   private:
     LinkedListOfInts List;
+    int passedTests = 0;
+    int totalTests = 0;
 
 };
 

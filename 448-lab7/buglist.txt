@@ -1,0 +1,8 @@
+List of known bugs:
+
+1. isEmpty will return true for any size of LinkedList. We expect it to be false if size is greater than 0
+but it returns true regardless.
+
+2. BOTH removeBack and removeFront don't remove elements from the list. They also return true in any case.
+
+3. addBack adds to the front, not to the back.

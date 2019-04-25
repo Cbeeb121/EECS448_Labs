@@ -13,8 +13,9 @@ int main(int argc, char** argv)
 	LinkedListOfInts testableList;
 
 	Test myTest;
+	std::cout << "Running...\n";
 	myTest.runTests();
-	std::cout << "Running...\nAnd we're done.\nGoodbye.\n";
+	std::cout << "\nAnd we're done.\nGoodbye.\n";
 
 	return (0);
 
